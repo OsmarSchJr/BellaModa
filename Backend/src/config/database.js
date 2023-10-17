@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     dialect: 'mysql2',
     host: process.env.DATABASE_HOST,
-    port:DATABASE_PORT,
+    port: DATABASE_PORT,
     username:DATABASE_USERNAME,
     password:DATABASE_PASSWORD,
     database:DATABASE,
@@ -18,4 +18,4 @@ module.exports = {
         timezone: 'America/Sao_Paulo'
     },
     timezone: 'America/Sao_Paulo'
-}
+};
