@@ -1,12 +1,13 @@
-require('dotenv').config();
+require("dotenv").config();
 
 module.exports = {
-    dialect: 'mysql2',
+    dialect: 'mysql',
     host: process.env.DATABASE_HOST,
-    port: DATABASE_PORT,
-    username:DATABASE_USERNAME,
-    password:DATABASE_PASSWORD,
-    database:DATABASE,
+    port: process.env.DATABASE_PORT,
+    username:process.env.DATABASE_USERNAME,
+    password:process.env.DATABASE_PASSWORD,
+    database:process.env.DATABASE,
+    //socketPath: 'Applications/MAMP/tmp/mysql/mysql.sock',
     define: {
         timestamps: true,
         underscored: true,
@@ -15,7 +16,7 @@ module.exports = {
         'updatedAt': 'updated_at',
     },
     dialectOptions: {
-        timezone: 'America/Sao_Paulo'
+        timezone: 'local'
     },
-    timezone: 'America/Sao_Paulo'
+    //timezone: '-03:00'
 };
