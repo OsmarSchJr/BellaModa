@@ -12,6 +12,18 @@ module.exports = {
         autoIncrement: true,
       },
 
+      category_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { 
+          model: {
+            tableName: 'categories',
+            schema: 'schema',
+          },
+          key: 'id', 
+        },
+      },
+      
       title: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -65,6 +77,7 @@ module.exports = {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
+
 
     });
   
