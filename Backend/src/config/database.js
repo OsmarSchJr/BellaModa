@@ -7,7 +7,6 @@ module.exports = {
     username:process.env.DATABASE_USERNAME,
     password:process.env.DATABASE_PASSWORD,
     database:process.env.DATABASE,
-    //socketPath: 'Applications/MAMP/tmp/mysql/mysql.sock',
     define: {
         timestamps: true,
         underscored: true,

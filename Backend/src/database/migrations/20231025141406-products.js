@@ -36,13 +36,13 @@ module.exports = {
         allowNull: false,
       },
       
-      quantify_stock: {
+      quantity_stock: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
         allowNull: false,
       },
 
-      quantify_sold: {
+      quantity_sold: {
         type:Sequelize.INTEGER,
         defaultValue: 0,
         allowNull: false,
