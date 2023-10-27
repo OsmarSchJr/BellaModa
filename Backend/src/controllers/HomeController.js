@@ -1,8 +1,12 @@
+import CategoryModel from '../models/CategoryModel'
+
  class HomeClontroller {
-    index(req, res) {
-        res.json({
-            tudoCerto: true,
-        })
+    async index(req, res) {
+        const newCategory = await CategoryModel.create({
+            name: 'Camisa',
+
+        });
+        res.json(newCategory)
     }
  }
 

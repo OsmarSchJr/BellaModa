@@ -12,7 +12,8 @@ export default class ProductModel extends Model {
             discount_datetime_start: DataTypes.DATE,
             discount_datetime_end: DataTypes.DATE,
         }, {
-            sequelize
+            tableName: 'products',
+            sequelize: sequelize,
         });
     }
     static associate(models) {

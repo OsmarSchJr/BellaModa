@@ -1,13 +1,15 @@
-import Sequelize, {Model, DataTypes} from 'sequelize';
+import Sequelize, {Model} from 'sequelize';
 
-export default class Category extends Model {
+export default class CategoryModel extends Model {
     static init(sequelize) {
         super.init({
-            name: DataTypes.STRING,
-            parent_id: DataTypes.INTEGER,
+            name: Sequelize.STRING,
+            parent_id: Sequelize.INTEGER,
         }, {
-            sequelize
+            tableName: 'categories',
+            sequelize: sequelize,
         });
+        return this
     }
     static associate(models) {
         this.hasMany(models.ProductModel, {
