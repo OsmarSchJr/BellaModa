@@ -9,7 +9,7 @@ export default class CategoryModel extends Model {
             tableName: 'categories',
             sequelize: sequelize,
         });
-        return this
+        return this;
     }
     static associate(models) {
         this.hasMany(models.ProductModel, {
