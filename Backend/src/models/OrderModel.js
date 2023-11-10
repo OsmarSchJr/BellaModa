@@ -1,5 +1,7 @@
 import Sequelize, {Model} from 'sequelize';
 
+import OrdersProducts from './OrdersProductsModel';
+
 export default class OrderModel extends Model {
     static init(sequelize) {
         super.init({

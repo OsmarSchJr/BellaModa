@@ -1,4 +1,5 @@
 import Sequelize, {Model} from 'sequelize';
+import bcryptjs from 'bcryptjs';
 
 export default class UserModel extends Model {
     static init(sequelize) {
@@ -14,8 +15,15 @@ export default class UserModel extends Model {
         }, {
             tableName: 'users',
             sequelize: sequelize,
+            hooks: {
+                beforeSave: async (user) => {
+                    if(user._changed.password) {
+                        user.password = await bcryptjs.hash(user.password, 8);
+                    }
+                }
+            }
         });
-        return this
+        return this;
     }
     static associate(models) {
         this.hasMany(models.AddressModel, {
