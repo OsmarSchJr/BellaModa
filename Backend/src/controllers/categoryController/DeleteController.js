@@ -1,7 +1,7 @@
 import CategoryModel from '../../models/CategoryModel';
 
-class UpdateController {
-    async update(req, res) {
+class DeleteController {
+    async delete(req, res) {
         try {
             if(!req.params.id) {
                 return res.status(400).json({
@@ -17,13 +17,13 @@ class UpdateController {
                 });
             }
 
-            const newCategory = await category.update(req.body);
+            await category.destroy();
             
-            return res.json(newCategory);
+            return res.json(null);
         } catch (err) {
             return res.json(null);
         }
     }
 }
 
-export default new UpdateController();
+export default new DeleteController();
