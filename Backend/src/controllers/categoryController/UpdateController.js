@@ -20,8 +20,9 @@ class UpdateController {
             const newCategory = await category.update(req.body);
             
             return res.json(newCategory);
-        } catch (err) {
-            return res.json(null);
+        } catch(error) {
+            console.error(new Date().toUTCString(), '-', error);
+            return res.status(500).json({ message: 'internal error' });
         }
     }
 }

@@ -1,4 +1,4 @@
-import CategoryModel from '../../models/CategoryModel';
+import UserModel from '../../models/UserModel';
 
 class DeleteController {
     async delete(req, res) {
@@ -9,7 +9,7 @@ class DeleteController {
                 });
             }
 
-            const category = await CategoryModel.findByPk(req.params.id);
+            const category = await UserModel.findByPk(req.params.id);
 
             if(!category) {
                 return res.status(400).json({

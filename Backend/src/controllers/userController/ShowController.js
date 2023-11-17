@@ -1,9 +1,9 @@
-import CategoryModel from "../../models/CategoryModel";
+import UserModel from '../../models/UserModel';
 
 class ShowController {
     async show(req, res) {
         try {
-            const categorie = await CategoryModel.findAll({
+            const categorie = await UserModel.findAll({
                 attributes: {
                     exclude: ["createdAt", "updatedAt"],
                 },

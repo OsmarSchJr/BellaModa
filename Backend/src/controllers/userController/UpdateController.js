@@ -1,7 +1,7 @@
-import CategoryModel from '../../models/CategoryModel';
+import UserModel from '../../models/UserModel';
 
-class DeleteController {
-    async delete(req, res) {
+class UpdateController {
+    async update(req, res) {
         try {
             if(!req.params.id) {
                 return res.status(400).json({
@@ -9,7 +9,7 @@ class DeleteController {
                 });
             }
 
-            const category = await CategoryModel.findByPk(req.params.id);
+            const category = await UserModel.findByPk(req.params.id);
 
             if(!category) {
                 return res.status(400).json({
@@ -17,9 +17,9 @@ class DeleteController {
                 });
             }
 
-            await category.destroy();
+            const newCategory = await category.update(req.body);
             
-            return res.json(null);
+            return res.json(newCategory);
         } catch(error) {
             console.error(new Date().toUTCString(), '-', error);
             return res.status(500).json({ message: 'internal error' });
@@ -27,4 +27,4 @@ class DeleteController {
     }
 }
 
-export default new DeleteController();
+export default new UpdateController();

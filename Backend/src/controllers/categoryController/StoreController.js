@@ -16,8 +16,8 @@ class StoreController {
 
             return res.json(category);
             
-        } catch(err) {
-            console.err(new Date().toUTCString(), '-', err);
+        } catch(error) {
+            console.error(new Date().toUTCString(), '-', error);
             return res.status(500).json({ message: 'internal error' });
         }
 

@@ -1,9 +1,9 @@
-import CategoryModel from "../../models/CategoryModel";
+import UserModel from '../../models/UserModel';
 
 class IndexController {
     async index(req, res) {
         try {
-            const categories = await CategoryModel.findAll();
+            const categories = await UserModel.findAll();
             return res.json(categories);
         } catch(error) {
             console.error(new Date().toUTCString(), '-', error);

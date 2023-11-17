@@ -3,7 +3,15 @@ import Sequelize, {Model} from 'sequelize';
 export default class CategoryModel extends Model {
     static init(sequelize) {
         super.init({
-            name: Sequelize.STRING,
+            name: {
+                type: Sequelize.STRING,
+                validate: {
+                    len: {
+                        args: [3, 45],
+                        msg: 'Campo deve ter entre 3 a 45 caracteres.'
+                    },
+                },
+            },
             parent_id: Sequelize.INTEGER,
         }, {
             tableName: 'categories',
