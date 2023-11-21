@@ -1,5 +1,7 @@
 import UserModel from '../../models/UserModel';
 
+import validateCpf from '../../util/validateCpf';
+
 class UpdateController {
     async update(req, res) {
         try {
@@ -9,17 +11,17 @@ class UpdateController {
                 });
             }
 
-            const category = await UserModel.findByPk(req.params.id);
+            const user = await UserModel.findByPk(req.params.id);
 
-            if(!category) {
+            if(!user) {
                 return res.status(400).json({
-                    errors: ["Category doesn't exist."],
+                    errors: ["User doesn't exist."],
                 });
             }
 
-            const newCategory = await category.update(req.body);
+            const newUser = await user.update(req.body);
             
-            return res.json(newCategory);
+            return res.json(newUser);
         } catch(error) {
             console.error(new Date().toUTCString(), '-', error);
             return res.status(500).json({ message: 'internal error' });

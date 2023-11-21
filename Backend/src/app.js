@@ -6,6 +6,7 @@ import './database';
 
 import express from 'express';
 
+import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 
 class App {
@@ -22,6 +23,7 @@ class App {
 
     routes() {
         this.app.use('/categories/', categoryRoutes);
+        this.app.use('/users/', userRoutes);
     }
 }
 

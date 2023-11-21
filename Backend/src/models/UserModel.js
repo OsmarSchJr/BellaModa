@@ -1,16 +1,46 @@
 import Sequelize, {Model} from 'sequelize';
 import bcryptjs from 'bcryptjs';
 
+
 export default class UserModel extends Model {
     static init(sequelize) {
         super.init({
-            name: Sequelize.STRING,
-            email: Sequelize.STRING,
-            cpf: Sequelize.STRING,
-            password: Sequelize.STRING,
-            admin: Sequelize.BOOLEAN,
-            reset_password_token: Sequelize.STRING,
-            reset_password_expires: Sequelize.DATE,
+            name: {
+                type: Sequelize.STRING,
+                defaultValue: '',
+                validate: {
+                    len: {
+                        args : [3, 255],
+                        msg: 'the name field must have between 3 and 255 caracters',
+                    },
+                }
+            },
+            email: {
+                type: Sequelize.STRING,
+                defaultValue: '',
+                validate: {
+                    isEmail: {
+                        msg: 'invalid email',
+                    }
+                }
+            },
+            cpf: {
+                type: Sequelize.STRING,
+                defaultValue: '',
+            },
+            password: {
+                type: Sequelize.STRING,
+                defaultValue: '',
+            },
+            admin: {
+                type: Sequelize.BOOLEAN,
+            },
+            reset_password_token: {
+                type: Sequelize.STRING,
+            },
+            reset_password_expires: {
+                type: Sequelize.DATE,
+            },
 
         }, {
             tableName: 'users',
