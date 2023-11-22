@@ -4,20 +4,35 @@ import validateCpf from '../../util/validateCpf';
 
 class UpdateController {
     async update(req, res) {
+        
+        const { name, email, cpf, currentPassword, newPassword } = req.body;
+
+        if (cpf && validateCpf(cpf) == false) {
+            return res.status(400).json({ message: 'invalid cpf' });
+        }
         try {
-            if(!req.params.id) {
+            let password;
+            const user = await UserModel.findByPk(req.params.id);
+
+            if (!req.params.id) {
                 return res.status(400).json({
                     errors: ['Missing id.'],
                 });
             }
-
-            const user = await UserModel.findByPk(req.params.id);
-
-            if(!user) {
+            if (!user) {
                 return res.status(400).json({
-                    errors: ["User doesn't exist."],
+                    errors: ["User doesn't found."],
                 });
             }
+            if (currentPassword && newPassword) {
+                if (await user.checkPassword(currentPassword)) {
+                    password = newPassword;
+                } else {
+                    return res.status(400).json({ message: 'wrong current password' });
+                }
+            }
+
+            if( !password) password = undefined;
 
             const newUser = await user.update(req.body);
             

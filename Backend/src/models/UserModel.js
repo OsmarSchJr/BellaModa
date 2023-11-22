@@ -28,9 +28,19 @@ export default class UserModel extends Model {
                 type: Sequelize.STRING,
                 defaultValue: '',
             },
-            password: {
+            password_hash: {
                 type: Sequelize.STRING,
                 defaultValue: '',
+                
+            },
+            password: {
+                type: Sequelize.VIRTUAL,
+                validate: {
+                    len: {
+                        args: [6, 50],
+                        msg: 'password must contain between 6 to 50 characters',
+                    }
+                }
             },
             admin: {
                 type: Sequelize.BOOLEAN,
@@ -45,13 +55,13 @@ export default class UserModel extends Model {
         }, {
             tableName: 'users',
             sequelize: sequelize,
-            hooks: {
-                beforeSave: async (user) => {
-                    if(user._changed.password) {
-                        user.password = await bcryptjs.hash(user.password, 8);
-                    }
-                }
+        });
+
+        this.addHook('beforeSave', async user => {
+            if (user.password) {
+                user.password_hash = await bcryptjs.hash(user.password, 8);
             }
+            
         });
         return this;
     }

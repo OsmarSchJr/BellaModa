@@ -11,13 +11,13 @@ class DeleteController {
 
             const user = await UserModel.findByPk(req.params.id);
 
-            if(!category) {
+            if(!user) {
                 return res.status(400).json({
                     errors: ["User doesn't exist."],
                 });
             }
 
-            await category.destroy();
+            await user.destroy();
             
             return res.sendStatus(200);
         } catch(error) {
