@@ -6,6 +6,7 @@ import showController from '../controllers/productController/ShowController';
 import updateController from '../controllers/productController/UpdateController';
 import deleteController from '../controllers/productController/DeleteController';
 
+
 const router = new Router();
 
 router.get('/', indexController.index);

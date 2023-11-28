@@ -10,6 +10,7 @@ import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import productRoutes from './routes/productRoutes';
 
+
 class App {
     constructor() {
         this.app = express();
@@ -25,7 +26,7 @@ class App {
     routes() {
         this.app.use('/categories/', categoryRoutes);
         this.app.use('/users/', userRoutes);
-        this.app.use('/products/', productRoutes);
+        this.app.use('/products', productRoutes);
     }
 }
 
