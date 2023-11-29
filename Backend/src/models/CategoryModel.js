@@ -12,7 +12,9 @@ export default class CategoryModel extends Model {
                     },
                 },
             },
-            parent_id: Sequelize.INTEGER,
+            parent_id: {
+                type: Sequelize.INTEGER,
+            },
         }, {
             tableName: 'categories',
             sequelize: sequelize,

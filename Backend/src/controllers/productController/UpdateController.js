@@ -12,9 +12,9 @@ class UpdateController {
                 });
             }
             
-            const newUser = await user.update(req.body);
+            const newProduct = await product.update(req.body);
             
-            return res.json(newUser);
+            return res.json(newProduct);
         } catch(error) {
             console.error(new Date().toUTCString(), '-', error);
             return res.status(500).json({ message: 'internal error' });

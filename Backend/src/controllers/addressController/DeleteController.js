@@ -1,4 +1,4 @@
-import ProductModel from '../../models/ProductModel';
+import CategoryModel from '../../models/CategoryModel';
 
 class DeleteController {
     async delete(req, res) {
@@ -9,17 +9,17 @@ class DeleteController {
                 });
             }
 
-            const product = await ProductModel.findByPk(req.params.id);
+            const category = await CategoryModel.findByPk(req.params.id);
 
-            if(!product) {
+            if(!category) {
                 return res.status(400).json({
-                    errors: ["product doesn't exist."],
+                    errors: ["Category doesn't exist."],
                 });
             }
 
-            await product.destroy();
+            await category.destroy();
             
-            return res.sendStatus(200);
+            return res.json(null);
         } catch(error) {
             console.error(new Date().toUTCString(), '-', error);
             return res.status(500).json({ message: 'internal error' });

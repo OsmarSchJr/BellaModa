@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
       },
 
-      descrition: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
       },
